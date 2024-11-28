@@ -15,9 +15,4 @@ public class Storage {
     private Integer level;
     private String specialty;
 
-
-
-
-
-
 }
