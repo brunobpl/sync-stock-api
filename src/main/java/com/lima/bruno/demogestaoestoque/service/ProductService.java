@@ -16,4 +16,16 @@ public class ProductService {
     public List<Product> listProducts(){
         return productRepository.findAll();
     }
+
+    public Product createProduct(Product product){
+        Product newProduct = new Product();
+        newProduct.setName(product.getName());
+        newProduct.setSpecialty(product.getSpecialty());
+        newProduct.setDescription(product.getDescription());
+        newProduct.setUnitMeasure(String.valueOf(product.getUnitMeasure()));
+        newProduct.setUnitPrice(product.getUnitPrice());
+        newProduct.setQuantity(product.getQuantity());
+        newProduct.setStorage(product.getStorage());
+        return productRepository.save(newProduct);
+    }
 }
