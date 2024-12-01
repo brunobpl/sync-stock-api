@@ -1,7 +1,7 @@
 package com.lima.bruno.demogestaoestoque.controller;
 
-import com.lima.bruno.demogestaoestoque.entity.Product;
-import com.lima.bruno.demogestaoestoque.service.ProductService;
+import com.lima.bruno.demogestaoestoque.entity.Produto;
+import com.lima.bruno.demogestaoestoque.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,16 +10,16 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/products")
-public class ProductController {
+public class ProdutoController {
 
     @Autowired
-    private ProductService productService;
+    private ProdutoService produtoService;
 
     @GetMapping
-    public ResponseEntity<List<Product>> getProducts(){
+    public ResponseEntity<List<Produto>> getProducts(){
         try{
-            List<Product> products = productService.listProducts();
-            return ResponseEntity.ok(products);
+            List<Produto> produtos = produtoService.listarProdutos();
+            return ResponseEntity.ok(produtos);
         }
         catch (Exception e){
             return ResponseEntity.badRequest().build();
@@ -27,7 +27,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<Product> createProduct(@RequestBody Product product){
+    public ResponseEntity<Produto> createProduct(@RequestBody Produto product) {
         return null;
     }
 }
