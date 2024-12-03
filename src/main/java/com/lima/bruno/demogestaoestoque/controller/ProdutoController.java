@@ -26,8 +26,14 @@ public class ProdutoController {
         }
     }
 
-    @PostMapping
-    public ResponseEntity<Produto> createProduct(@RequestBody Produto product) {
-        return null;
+    @PostMapping("/add")
+    public ResponseEntity<Produto> createProduct(@RequestBody Produto produto){
+        try{
+            Produto novoProduto = produtoService.criarProduto(produto);
+            return ResponseEntity.ok(novoProduto);
+        }
+        catch (Exception e){
+            return ResponseEntity.badRequest().build();
+        }
     }
 }
