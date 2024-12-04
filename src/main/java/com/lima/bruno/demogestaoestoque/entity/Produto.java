@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -16,15 +18,22 @@ public class Produto implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
     private String especialidade;
     private String descricao;
+
+    @Enumerated(EnumType.STRING)
     private UnidadeDeMedidaEnum unidadeDeMedida;
+
     private Double precoUnitario;
     private Integer quantidade;
 
     @OneToOne(cascade = CascadeType.ALL)
     private Estoque estoque;
+
+    @ManyToMany(mappedBy = "produtos")
+    private List<NotaFiscal> notasFiscais = new ArrayList<>();
 
 
     public Produto() {

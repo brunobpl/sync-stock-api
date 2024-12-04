@@ -25,9 +25,15 @@ public class NotaFiscal implements Serializable {
     private Double total;
 
     @ManyToOne
+    @JoinColumn(name = "fornecedor_id", nullable = false)
     private Fornecedor fornecedor;
 
     @ManyToMany
+    @JoinTable(
+            name = "nota_fiscal_produto",
+            joinColumns = @JoinColumn(name = "nota_fiscal_id"),
+            inverseJoinColumns = @JoinColumn(name = "produto_id")
+    )
     private List<Produto> produtos;
 
     public NotaFiscal() {
