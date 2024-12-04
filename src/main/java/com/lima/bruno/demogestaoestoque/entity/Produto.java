@@ -26,6 +26,7 @@ public class Produto implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     private Estoque estoque;
 
+
     public Produto() {
     }
 

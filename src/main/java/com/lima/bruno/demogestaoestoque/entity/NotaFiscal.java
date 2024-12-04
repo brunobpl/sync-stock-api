@@ -27,7 +27,7 @@ public class NotaFiscal implements Serializable {
     @ManyToOne
     private Fornecedor fornecedor;
 
-    @OneToMany
+    @ManyToMany
     private List<Produto> produtos;
 
     public NotaFiscal() {
