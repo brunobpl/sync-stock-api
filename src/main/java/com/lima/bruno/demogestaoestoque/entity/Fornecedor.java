@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -23,6 +25,8 @@ public class Fornecedor implements Serializable {
     private String cpf;
     private String cnpj;
 
+    @OneToMany(mappedBy = "fornecedor", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<NotaFiscal> notasFiscais = new ArrayList<>();
 
     public Fornecedor() {
     }

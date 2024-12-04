@@ -36,4 +36,24 @@ public class ProdutoController {
             return ResponseEntity.badRequest().build();
         }
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Produto> getProductById(@PathVariable("id") Long id){
+        Produto produto = produtoService.buscarProdutoPorId(id);
+        return ResponseEntity.ok(produto);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable("id") Long id){
+        produtoService.excluirProduto(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("{produtoId}/estoque/{estoqueId}")
+    public ResponseEntity<Produto> atualizaEstoque(
+            @PathVariable Long produtoId,
+            @PathVariable Long estoqueId) {
+        Produto produtoAtualizado = produtoService.atualizaEstoque(produtoId, estoqueId);
+        return ResponseEntity.ok(produtoAtualizado);
+    }
 }
