@@ -58,6 +58,11 @@ public class ProdutoService {
         }
     }
 
+    /**
+     * @param produtoId ID do produto a ser atualizado
+     * @param estoqueId ID do novo estoque para alocar o produto
+     * @return Produto com estoque atualizado
+     */
     public Produto atualizaEstoque(Long produtoId, Long estoqueId){
 
         Produto produto = produtoRepository.findById(produtoId)
